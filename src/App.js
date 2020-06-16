@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Output from "./output";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default function App(){
+  let [count, setCounter]=useState(1);
+  let [isMorning, setMorning]=useState(false);
 
-export default App;
+  return(
+    <div className={`box ${isMorning ? 'dayLight' : ''}`}>
+      <h1>Good {isMorning?'Morning':'Night'}</h1>
+      <Output counter={count}/>
+
+      <br />
+      <br />
+
+      <button onClick={()=>setCounter(count+1)}>Increase counter</button>
+      <button onClick={()=>setCounter(count-1)}>Decrease counter</button> <br /> <br/>
+      <button onClick={()=>setMorning(!isMorning)}>update day</button>
+      <br />
+      <br />
+
+      <br />
+      <br />
+      <h5>Copyright 2020 - Developed by Syed Muhemin ALi</h5>
+    </div>
+  )
+}
